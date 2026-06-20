@@ -238,11 +238,87 @@ const tSend    = document.getElementById('tSend');
 const tStatus  = document.getElementById('tStatus');
 const tLabel   = document.getElementById('tStatusLabel');
 const chipWrap = document.getElementById('demoChips');
+const demoTerminal = document.querySelector('.demo-terminal');
+const agentCore = document.getElementById('agentCore');
+const orbit     = document.getElementById('orbit');
+const coreState = document.getElementById('coreState');
+const telLatency = document.getElementById('telLatency');
+const telTokens  = document.getElementById('telTokens');
+const telTools   = document.getElementById('telTools');
+const telConf    = document.getElementById('telConf');
 
 if (!tMsgs) throw new Error('Demo elements not found');
 
 // ── State ─────────────────────────────────────────
 let running = false;
+let toolCount = 0;
+let telTimer = null;
+
+// ── Agent core / orb state ────────────────────────
+function setOrb(state, label) {
+    agentCore.className = 'agent-core' + (state ? ' ' + state : '');
+    coreState.textContent = label;
+}
+
+// Short mono labels for orbiting tool nodes, e.g. analyze_tickets → AT
+function shortLabel(fn) {
+    return fn.split('_').map(w => w[0]).join('').slice(0, 3).toUpperCase();
+}
+
+// Lay out tool nodes evenly around the orbit ring
+function buildOrbit(tools) {
+    orbit.innerHTML = '';
+    const r = 58, c = 70;
+    return tools.map((t, i) => {
+        const ang = (-90 + i * (360 / tools.length)) * Math.PI / 180;
+        const n = document.createElement('div');
+        n.className = 'orbit-node';
+        n.style.left = (c + r * Math.cos(ang)) + 'px';
+        n.style.top  = (c + r * Math.sin(ang)) + 'px';
+        n.innerHTML = `<span>${shortLabel(t.fn)}</span>`;
+        orbit.appendChild(n);
+        return n;
+    });
+}
+
+// ── Telemetry HUD ─────────────────────────────────
+function resetTelemetry() {
+    toolCount = 0;
+    telTools.textContent = '0';
+    telLatency.textContent = '—';
+    telTokens.textContent = '—';
+    telConf.textContent = '—';
+}
+function startTelemetry() {
+    telTimer = setInterval(() => {
+        telLatency.textContent = (26 + Math.floor(Math.random() * 38)) + 'ms';
+        telTokens.textContent  = (64 + Math.floor(Math.random() * 88));
+    }, 110);
+}
+function stopTelemetry() {
+    clearInterval(telTimer); telTimer = null;
+    telTokens.textContent = '—';
+    telLatency.textContent = '42ms';
+}
+function rampConfidence(target) {
+    let v = 0;
+    const t = setInterval(() => {
+        v += 4;
+        if (v >= target) { v = target; clearInterval(t); }
+        telConf.textContent = v + '%';
+    }, 24);
+}
+
+// ── Reasoning stream entry ────────────────────────
+function appendReasoning(html) {
+    const idle = tActLog.querySelector('.t-act-idle');
+    if (idle) idle.remove();
+    const el = document.createElement('div');
+    el.className = 'rs-think';
+    el.innerHTML = html;
+    tActLog.appendChild(el);
+    tActLog.scrollTop = tActLog.scrollHeight;
+}
 
 // ── Chip clicks ───────────────────────────────────
 chipWrap?.querySelectorAll('.demo-chip').forEach(chip => {
@@ -281,15 +357,20 @@ async function runDemo(scenarioKey, customUserMsg = null) {
     if (!s) return;
     running = true;
 
-    // Lock UI
-    setStatus('thinking', 'Working…');
+    // Lock + power up the console
+    demoTerminal.classList.add('active');
+    setStatus('thinking', 'Reasoning');
+    setOrb('thinking', 'Reasoning');
     tSend.disabled = true;
     tInput.disabled = true;
     chipWrap?.querySelectorAll('.demo-chip').forEach(c => c.disabled = true);
 
-    // Clear panels
+    // Clear panels + spin up visualizer
     tMsgs.innerHTML = '';
     tActLog.innerHTML = '';
+    resetTelemetry();
+    const nodes = buildOrbit(s.tools);
+    startTelemetry();
 
     await sleep(150);
 
@@ -297,26 +378,37 @@ async function runDemo(scenarioKey, customUserMsg = null) {
     appendUserMsg(customUserMsg || s.userMsg);
     await sleep(480);
 
-    // Thinking indicator
+    // Thinking
     const thinkEl = appendThinking();
-    await sleep(650);
+    appendReasoning('Parsing objective · selecting <b>tools</b>…');
+    await sleep(720);
     thinkEl.remove();
 
-    // Tool calls
-    for (const tool of s.tools) {
-        await appendToolCall(tool);
-        await sleep(180);
+    // Tool calls — light up the matching orbit node as each runs
+    for (let i = 0; i < s.tools.length; i++) {
+        nodes[i]?.classList.add('active');
+        await appendToolCall(s.tools[i]);
+        nodes[i]?.classList.remove('active');
+        nodes[i]?.classList.add('done');
+        toolCount++;
+        telTools.textContent = String(toolCount);
+        await sleep(160);
     }
 
-    await sleep(280);
+    appendReasoning('Synthesizing findings into a <b>plan</b>…');
+    await sleep(300);
 
     // Stream AI response
-    setStatus('streaming', 'Responding…');
+    setStatus('streaming', 'Responding');
+    setOrb('streaming', 'Streaming');
     const bubble = appendAIBubble();
     await streamInto(bubble, s.response);
 
     // Done
-    setStatus('ready', 'Ready');
+    stopTelemetry();
+    rampConfidence(90 + Math.floor(Math.random() * 8));
+    setStatus('ready', 'Online');
+    setOrb('ready', 'Complete');
     running = false;
     tSend.disabled = false;
     tInput.disabled = false;

@@ -28,6 +28,7 @@
         </a>
         <div class="nav-links" id="navLinks">
             <a href="#demo" class="nav-link">Demo</a>
+            <a href="#work" class="nav-link">Work</a>
             <a href="#contact" class="nav-link">Contact</a>
         </div>
         <div class="nav-actions">
@@ -40,6 +41,7 @@
 
     <div class="mobile-menu" id="mobileMenu">
         <a href="#demo" class="mobile-nav-link">Demo</a>
+        <a href="#work" class="mobile-nav-link">Work</a>
         <a href="#contact" class="mobile-nav-link">Contact</a>
         <a href="#contact" class="btn btn-primary" style="text-align:center">Get in Touch</a>
     </div>
@@ -51,7 +53,6 @@
         <section class="demo-wrap" id="demo">
             <div class="container">
                 <div class="demo-intro reveal">
-                    <div class="section-tag">Live Demo</div>
                     <h1 class="demo-h">See AI reason.<br><span class="gradient-text">Right now.</span></h1>
                     <p class="demo-sub">Pick a business challenge. Watch a real AI agent think through it — tools, decisions, and all.</p>
                 </div>
@@ -64,6 +65,7 @@
                 </div>
 
                 <div class="demo-terminal reveal" style="--delay:160ms">
+                    <span class="t-scan"></span>
                     <!-- Chrome bar -->
                     <div class="t-chrome">
                         <div class="t-dots">
@@ -71,10 +73,10 @@
                             <span class="t-dot yw"></span>
                             <span class="t-dot gn"></span>
                         </div>
-                        <span class="t-label">solvbit-agent · claude-sonnet-4-6 · tool_use</span>
+                        <span class="t-label">solvbit-agent · claude-sonnet-4-6 · autonomous</span>
                         <div class="t-status" id="tStatus">
                             <span class="t-status-dot"></span>
-                            <span id="tStatusLabel">Ready</span>
+                            <span id="tStatusLabel">Online</span>
                         </div>
                     </div>
 
@@ -93,14 +95,31 @@
 
                         <div class="t-divider"></div>
 
-                        <!-- Activity panel -->
+                        <!-- Agent visualizer panel -->
                         <div class="t-activity">
+                            <!-- Agent core -->
+                            <div class="agent-core" id="agentCore">
+                                <div class="core-rings"><span></span><span></span><span></span></div>
+                                <div class="orbit" id="orbit"></div>
+                                <div class="core-orb"><span class="core-orb-core"></span></div>
+                                <div class="core-state" id="coreState">Standby</div>
+                            </div>
+
+                            <!-- Telemetry HUD -->
+                            <div class="telemetry">
+                                <div class="tel"><span class="tel-val" id="telLatency">—</span><span class="tel-key">latency</span></div>
+                                <div class="tel"><span class="tel-val" id="telTokens">—</span><span class="tel-key">tok/s</span></div>
+                                <div class="tel"><span class="tel-val" id="telTools">0</span><span class="tel-key">tools</span></div>
+                                <div class="tel"><span class="tel-val" id="telConf">—</span><span class="tel-key">conf</span></div>
+                            </div>
+
+                            <!-- Reasoning stream -->
                             <div class="t-act-header">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                                Agent Activity
+                                Reasoning Stream
                             </div>
                             <div class="t-act-log" id="tActLog">
-                                <div class="t-act-idle">Waiting for input…</div>
+                                <div class="t-act-idle">Awaiting directive…</div>
                             </div>
                         </div>
                     </div>
@@ -110,6 +129,93 @@
                     This demo runs scripted scenarios illustrating real agent patterns we build.
                     <a href="#contact">Ready to build one for your business?</a>
                 </p>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SELECTED WORK
+             ============================================================ -->
+        <section class="section" id="work">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div class="section-tag">Selected Work</div>
+                    <h2 class="section-title">From the server room to the boardroom.</h2>
+                    <p class="section-desc">We design, build, and ship the full stack — physical, digital, and strategic. A few of the things we do.</p>
+                </div>
+
+                <div class="work-grid">
+                    <!-- Full office builds -->
+                    <article class="work-card reveal">
+                        <div class="work-card-header">
+                            <div class="work-tags">
+                                <span class="work-tag">Infrastructure</span>
+                            </div>
+                            <div class="work-metric">
+                                <span class="metric-num">0→1</span>
+                                <span class="metric-label">Turnkey</span>
+                            </div>
+                        </div>
+                        <h3 class="work-title">Full office buildouts</h3>
+                        <p class="work-desc">Greenfield workspaces wired end to end — structured cabling, networking, Wi-Fi, access control, AV, and security. Move-in ready infrastructure that just works on day one.</p>
+                        <div class="work-stack">
+                            <span>Networking</span><span>Cabling</span><span>Access Control</span><span>AV</span>
+                        </div>
+                    </article>
+
+                    <!-- Full-stack development -->
+                    <article class="work-card reveal" style="--delay:80ms">
+                        <div class="work-card-header">
+                            <div class="work-tags">
+                                <span class="work-tag">Software</span>
+                            </div>
+                            <div class="work-metric">
+                                <span class="metric-num">E2E</span>
+                                <span class="metric-label">Full-stack</span>
+                            </div>
+                        </div>
+                        <h3 class="work-title">Full-stack development</h3>
+                        <p class="work-desc">Custom web and mobile applications from database to UI. APIs, dashboards, internal tools, and AI agents — architected to scale and built to ship fast.</p>
+                        <div class="work-stack">
+                            <span>React</span><span>FastAPI</span><span>Postgres</span><span>AI Agents</span>
+                        </div>
+                    </article>
+
+                    <!-- Cloud migration -->
+                    <article class="work-card reveal" style="--delay:160ms">
+                        <div class="work-card-header">
+                            <div class="work-tags">
+                                <span class="work-tag">Cloud</span>
+                            </div>
+                            <div class="work-metric">
+                                <span class="metric-num">0</span>
+                                <span class="metric-label">Downtime</span>
+                            </div>
+                        </div>
+                        <h3 class="work-title">On-prem → cloud migrations</h3>
+                        <p class="work-desc">Lift, shift, and modernize. We move legacy workloads off aging hardware into AWS with zero-downtime cutovers, cost controls, and infrastructure as code.</p>
+                        <div class="work-stack">
+                            <span>AWS</span><span>Terraform</span><span>Docker</span><span>CI/CD</span>
+                        </div>
+                    </article>
+
+                    <!-- C-level advisory -->
+                    <article class="work-card reveal" style="--delay:240ms">
+                        <div class="work-card-header">
+                            <div class="work-tags">
+                                <span class="work-tag">Advisory</span>
+                            </div>
+                            <div class="work-metric">
+                                <span class="metric-num">C×O</span>
+                                <span class="metric-label">Strategy</span>
+                            </div>
+                        </div>
+                        <h3 class="work-title">C-level tech advisory</h3>
+                        <p class="work-desc">Trusted counsel for executives navigating the future state of technology. AI roadmaps, build-vs-buy calls, and pragmatic strategy that turns hype into a plan.</p>
+                        <div class="work-stack">
+                            <span>AI Strategy</span><span>Roadmapping</span><span>Due Diligence</span>
+                        </div>
+                    </article>
+                </div>
             </div>
         </section>
 
