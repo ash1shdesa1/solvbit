@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solvbit — AI & Tech Consulting</title>
-    <meta name="description" content="Solvbit is an AI & technology consulting firm. Tell us about your project.">
+    <meta name="description" content="See how an AI agent reasons through your business problem — live, right now. Then let's build one for you.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,7 +14,6 @@
     <div class="bg-grid"></div>
     <div class="bg-glow"></div>
 
-    <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <a href="#" class="logo">
             <div class="logo-icon">
@@ -27,14 +26,97 @@
             </div>
             <span class="logo-text">solvbit</span>
         </a>
+        <div class="nav-links" id="navLinks">
+            <a href="#demo" class="nav-link">Demo</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
         <div class="nav-actions">
             <a href="#contact" class="btn btn-primary nav-cta">Get in Touch</a>
+            <button class="btn btn-icon hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#demo" class="mobile-nav-link">Demo</a>
+        <a href="#contact" class="mobile-nav-link">Contact</a>
+        <a href="#contact" class="btn btn-primary" style="text-align:center">Get in Touch</a>
+    </div>
+
     <main>
-        <!-- Contact -->
-        <section class="section contact-section" id="contact" style="padding-top:clamp(7rem,15vw,10rem)">
+        <!-- ============================================================
+             AI DEMO
+             ============================================================ -->
+        <section class="demo-wrap" id="demo">
+            <div class="container">
+                <div class="demo-intro reveal">
+                    <div class="section-tag">Live Demo</div>
+                    <h1 class="demo-h">See AI reason.<br><span class="gradient-text">Right now.</span></h1>
+                    <p class="demo-sub">Pick a business challenge. Watch a real AI agent think through it — tools, decisions, and all.</p>
+                </div>
+
+                <div class="demo-chips reveal" style="--delay:80ms" id="demoChips">
+                    <button class="demo-chip active" data-s="support">Customer Support</button>
+                    <button class="demo-chip" data-s="sales">Sales Intelligence</button>
+                    <button class="demo-chip" data-s="cloud">Cloud Costs</button>
+                    <button class="demo-chip" data-s="fraud">Fraud Detection</button>
+                </div>
+
+                <div class="demo-terminal reveal" style="--delay:160ms">
+                    <!-- Chrome bar -->
+                    <div class="t-chrome">
+                        <div class="t-dots">
+                            <span class="t-dot rd"></span>
+                            <span class="t-dot yw"></span>
+                            <span class="t-dot gn"></span>
+                        </div>
+                        <span class="t-label">solvbit-agent · claude-sonnet-4-6 · tool_use</span>
+                        <div class="t-status" id="tStatus">
+                            <span class="t-status-dot"></span>
+                            <span id="tStatusLabel">Ready</span>
+                        </div>
+                    </div>
+
+                    <!-- Body -->
+                    <div class="t-body">
+                        <!-- Chat panel -->
+                        <div class="t-chat">
+                            <div class="t-msgs" id="tMsgs"></div>
+                            <div class="t-input-row">
+                                <input id="tInput" type="text" placeholder="Or describe your own challenge…" autocomplete="off" spellcheck="false">
+                                <button class="t-send" id="tSend" aria-label="Send">
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="t-divider"></div>
+
+                        <!-- Activity panel -->
+                        <div class="t-activity">
+                            <div class="t-act-header">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                                Agent Activity
+                            </div>
+                            <div class="t-act-log" id="tActLog">
+                                <div class="t-act-idle">Waiting for input…</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="demo-note reveal" style="--delay:200ms">
+                    This demo runs scripted scenarios illustrating real agent patterns we build.
+                    <a href="#contact">Ready to build one for your business?</a>
+                </p>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             CONTACT
+             ============================================================ -->
+        <section class="section contact-section" id="contact">
             <div class="container">
                 <div class="contact-grid">
                     <div class="contact-content reveal">
@@ -85,7 +167,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-bottom">
@@ -96,7 +177,6 @@
     </footer>
 
     <div class="toast" id="toast"><span id="toastMsg"></span></div>
-
     <script src="app.js"></script>
 </body>
 </html>
