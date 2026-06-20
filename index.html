@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solvbit — AI & Tech Consulting</title>
+    <meta name="description" content="Solvbit helps companies build AI-powered systems, modernize infrastructure, and ship faster. Strategy to production.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="4" y="4" width="14" height="14" rx="2" fill="currentColor"/>
+                    <rect x="22" y="4" width="14" height="14" rx="2" fill="currentColor" opacity="0.6"/>
+                    <rect x="4" y="22" width="14" height="14" rx="2" fill="currentColor" opacity="0.6"/>
+                    <rect x="22" y="22" width="14" height="14" rx="2" fill="currentColor" opacity="0.3"/>
+                </svg>
+            </div>
+            <span class="logo-text">solvbit</span>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#work" class="nav-link">Work</a>
+            <a href="#process" class="nav-link">Process</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="nav-actions">
+            <a href="#contact" class="btn btn-primary nav-cta">Get Started</a>
+            <button class="btn btn-icon hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#services" class="mobile-nav-link">Services</a>
+        <a href="#about" class="mobile-nav-link">About</a>
+        <a href="#work" class="mobile-nav-link">Work</a>
+        <a href="#process" class="mobile-nav-link">Process</a>
+        <a href="#contact" class="mobile-nav-link">Contact</a>
+        <a href="#contact" class="btn btn-primary" style="text-align:center">Get Started</a>
+    </div>
+
+    <main>
+        <!-- ============================================================
+             HERO
+             ============================================================ -->
+        <section class="hero" id="hero">
+            <div class="hero-badge reveal">
+                <span class="badge-dot"></span>
+                Available for new engagements
+            </div>
+            <h1 class="hero-title reveal">
+                We build<br>
+                <span class="gradient-text">AI-powered</span><br>
+                products that scale
+            </h1>
+            <p class="hero-subtitle reveal">
+                Solvbit is an AI & technology consulting firm. We help startups and enterprises design, build, and deploy intelligent systems — from strategy to production.
+            </p>
+            <div class="hero-actions reveal">
+                <a href="#contact" class="btn btn-primary btn-lg">
+                    Start a Project
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#work" class="btn btn-outline btn-lg">See Our Work</a>
+            </div>
+            <div class="hero-stats reveal">
+                <div class="stat-item">
+                    <span class="stat-num" data-target="60">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Projects Delivered</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-num" data-target="40">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Clients Served</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-num" data-target="3">0</span><span class="stat-plus">x</span>
+                    <span class="stat-label">Avg. ROI Delivered</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-num" data-target="5">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marquee -->
+        <div class="marquee-wrapper">
+            <div class="marquee">
+                <div class="marquee-track">
+                    <span>AI Strategy</span><span class="sep">·</span>
+                    <span>LLM Integration</span><span class="sep">·</span>
+                    <span>Cloud Architecture</span><span class="sep">·</span>
+                    <span>Data Engineering</span><span class="sep">·</span>
+                    <span>Agentic Systems</span><span class="sep">·</span>
+                    <span>RAG Pipelines</span><span class="sep">·</span>
+                    <span>MLOps</span><span class="sep">·</span>
+                    <span>API Development</span><span class="sep">·</span>
+                    <span>AI Strategy</span><span class="sep">·</span>
+                    <span>LLM Integration</span><span class="sep">·</span>
+                    <span>Cloud Architecture</span><span class="sep">·</span>
+                    <span>Data Engineering</span><span class="sep">·</span>
+                    <span>Agentic Systems</span><span class="sep">·</span>
+                    <span>RAG Pipelines</span><span class="sep">·</span>
+                    <span>MLOps</span><span class="sep">·</span>
+                    <span>API Development</span><span class="sep">·</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================
+             SERVICES
+             ============================================================ -->
+        <section class="section services-section" id="services">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div class="section-tag">What We Do</div>
+                    <h2 class="section-title">End-to-end AI & tech consulting</h2>
+                    <p class="section-desc">From ideation to deployment. We cover the full stack so you don't have to stitch together a dozen vendors.</p>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card reveal" style="--delay: 0ms">
+                        <div class="service-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <h3>AI Strategy</h3>
+                        <p>Identify where AI creates the most leverage in your business. We audit your workflows, data assets, and competitive position to build a prioritized AI roadmap.</p>
+                        <ul class="service-features">
+                            <li>AI opportunity assessment</li>
+                            <li>Build vs. buy analysis</li>
+                            <li>ROI modeling</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card reveal" style="--delay: 80ms">
+                        <div class="service-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="3" width="7" height="7" rx="1"/>
+                                <rect x="14" y="3" width="7" height="7" rx="1"/>
+                                <rect x="3" y="14" width="7" height="7" rx="1"/>
+                                <path d="M17.5 14v7M14 17.5h7"/>
+                            </svg>
+                        </div>
+                        <h3>LLM & Agentic Systems</h3>
+                        <p>Design and build production-grade AI agents, multi-step reasoning pipelines, and LLM-powered features using GPT-4, Claude, Gemini, or open-source models.</p>
+                        <ul class="service-features">
+                            <li>Agentic workflow design</li>
+                            <li>RAG & knowledge systems</li>
+                            <li>Fine-tuning & evaluation</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card reveal" style="--delay: 160ms">
+                        <div class="service-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                            </svg>
+                        </div>
+                        <h3>Data Engineering</h3>
+                        <p>Structured data is the foundation of every AI system. We design pipelines, warehouses, and feature stores that give your models clean, reliable inputs.</p>
+                        <ul class="service-features">
+                            <li>ETL / ELT pipelines</li>
+                            <li>Data warehouse design</li>
+                            <li>Vector DB & embeddings</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card reveal" style="--delay: 0ms">
+                        <div class="service-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </div>
+                        <h3>Cloud Architecture</h3>
+                        <p>Modern infrastructure that scales with your growth. We design systems on AWS, GCP, or Azure — containerized, observable, and cost-optimized from day one.</p>
+                        <ul class="service-features">
+                            <li>Infrastructure design</li>
+                            <li>Kubernetes & containers</li>
+                            <li>Cost & performance tuning</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card reveal" style="--delay: 80ms">
+                        <div class="service-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M18 20V10M12 20V4M6 20v-6"/>
+                            </svg>
+                        </div>
+                        <h3>Product Development</h3>
+                        <p>Full-stack engineering for AI-native products. APIs, mobile apps, web dashboards — we build production-ready software, not proof-of-concepts.</p>
+                        <ul class="service-features">
+                            <li>API & backend development</li>
+                            <li>Web & mobile apps</li>
+                            <li>Technical co-founding</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card reveal" style="--delay: 160ms">
+                        <div class="service-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <h3>MLOps & Deployment</h3>
+                        <p>Getting a model to production is harder than training it. We handle CI/CD for ML, model monitoring, drift detection, and retraining pipelines.</p>
+                        <ul class="service-features">
+                            <li>Model serving & versioning</li>
+                            <li>Monitoring & alerting</li>
+                            <li>Automated retraining</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             ABOUT
+             ============================================================ -->
+        <section class="section about-section" id="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content reveal">
+                        <div class="section-tag">About Solvbit</div>
+                        <h2 class="section-title">We think like engineers, not just consultants</h2>
+                        <p class="about-text">Solvbit was built on the belief that the best tech advice comes from people who actually build things. Our team has shipped production systems at startups and enterprises — we've felt the pain of bad architecture and brittle ML pipelines firsthand.</p>
+                        <p class="about-text">We're a small, senior-heavy team. You won't get handed off to junior staff after the sale. The people you talk to are the people who build your system.</p>
+                        <div class="about-badges">
+                            <span class="about-badge">Senior-only team</span>
+                            <span class="about-badge">No offshore handoffs</span>
+                            <span class="about-badge">Fixed-scope engagements</span>
+                            <span class="about-badge">Clear IP ownership</span>
+                        </div>
+                    </div>
+                    <div class="about-visual reveal">
+                        <div class="tech-stack-card">
+                            <div class="ts-header">
+                                <span class="ts-dot red"></span>
+                                <span class="ts-dot yellow"></span>
+                                <span class="ts-dot green"></span>
+                                <span class="ts-title">tech_stack.yaml</span>
+                            </div>
+                            <div class="ts-body">
+                                <div class="ts-line"><span class="ts-key">models:</span></div>
+                                <div class="ts-line ts-indent"><span class="ts-val">- GPT-4o / Claude 3.5 Sonnet</span></div>
+                                <div class="ts-line ts-indent"><span class="ts-val">- Llama 3 / Mistral (self-hosted)</span></div>
+                                <div class="ts-line ts-indent"><span class="ts-val">- Gemini 1.5 Pro</span></div>
+                                <div class="ts-line"><span class="ts-key">infra:</span></div>
+                                <div class="ts-line ts-indent"><span class="ts-val">- AWS · GCP · Azure</span></div>
+                                <div class="ts-line ts-indent"><span class="ts-val">- Kubernetes · Docker</span></div>
+                                <div class="ts-line ts-indent"><span class="ts-val">- Terraform · Pulumi</span></div>
+                                <div class="ts-line"><span class="ts-key">data:</span></div>
+                                <div class="ts-line ts-indent"><span class="ts-val">- Snowflake · BigQuery · dbt</span></div>
+                                <div class="ts-line ts-indent"><span class="ts-val">- Pinecone · pgvector · Weaviate</span></div>
+                                <div class="ts-line"><span class="ts-key">frameworks:</span></div>
+                                <div class="ts-line ts-indent"><span class="ts-val">- LangChain · LlamaIndex</span></div>
+                                <div class="ts-line ts-indent"><span class="ts-val">- FastAPI · Next.js · React Native</span></div>
+                                <div class="ts-line ts-indent"><span class="ts-val">- PyTorch · Hugging Face</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             WORK / CASE STUDIES
+             ============================================================ -->
+        <section class="section work-section" id="work">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div class="section-tag">Selected Work</div>
+                    <h2 class="section-title">Problems we've solved</h2>
+                    <p class="section-desc">A snapshot of recent engagements across industries.</p>
+                </div>
+
+                <div class="work-grid">
+                    <div class="work-card reveal" style="--delay: 0ms">
+                        <div class="work-card-header">
+                            <div class="work-tags">
+                                <span class="work-tag">LLM</span>
+                                <span class="work-tag">Agents</span>
+                                <span class="work-tag">SaaS</span>
+                            </div>
+                            <div class="work-metric">
+                                <span class="metric-num">70%</span>
+                                <span class="metric-label">ticket deflection</span>
+                            </div>
+                        </div>
+                        <h3 class="work-title">AI Support Agent for B2B SaaS</h3>
+                        <p class="work-desc">Built a multi-turn support agent that resolves tier-1 tickets without human intervention, using RAG over product docs and a tool-use loop for account lookups.</p>
+                        <div class="work-stack">
+                            <span>Claude API</span>
+                            <span>FastAPI</span>
+                            <span>pgvector</span>
+                            <span>Intercom</span>
+                        </div>
+                    </div>
+
+                    <div class="work-card reveal" style="--delay: 100ms">
+                        <div class="work-card-header">
+                            <div class="work-tags">
+                                <span class="work-tag">Data Engineering</span>
+                                <span class="work-tag">MLOps</span>
+                            </div>
+                            <div class="work-metric">
+                                <span class="metric-num">12×</span>
+                                <span class="metric-label">pipeline speed</span>
+                            </div>
+                        </div>
+                        <h3 class="work-title">Real-Time Fraud Detection Pipeline</h3>
+                        <p class="work-desc">Redesigned a batch fraud detection system into a streaming architecture using Kafka + Flink, feeding a gradient-boosted model with sub-50ms inference at 100k events/sec.</p>
+                        <div class="work-stack">
+                            <span>Kafka</span>
+                            <span>Flink</span>
+                            <span>XGBoost</span>
+                            <span>AWS</span>
+                        </div>
+                    </div>
+
+                    <div class="work-card reveal" style="--delay: 200ms">
+                        <div class="work-card-header">
+                            <div class="work-tags">
+                                <span class="work-tag">RAG</span>
+                                <span class="work-tag">Enterprise</span>
+                            </div>
+                            <div class="work-metric">
+                                <span class="metric-num">4 wks</span>
+                                <span class="metric-label">to production</span>
+                            </div>
+                        </div>
+                        <h3 class="work-title">Internal Knowledge Assistant</h3>
+                        <p class="work-desc">Deployed a private, self-hosted knowledge assistant over 40k internal documents for a 2,000-person enterprise — with source citations, access-control, and zero data leaving their VPC.</p>
+                        <div class="work-stack">
+                            <span>Llama 3</span>
+                            <span>Weaviate</span>
+                            <span>Kubernetes</span>
+                            <span>Next.js</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             PROCESS
+             ============================================================ -->
+        <section class="section process-section" id="process">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div class="section-tag">How We Work</div>
+                    <h2 class="section-title">From first call to live system</h2>
+                </div>
+
+                <div class="process-timeline">
+                    <div class="process-step reveal" style="--delay: 0ms">
+                        <div class="step-num">01</div>
+                        <div class="step-content">
+                            <h3>Discovery</h3>
+                            <p>1–2 week scoping sprint. We map your business problem, data assets, and constraints. You get a technical brief and a fixed-price proposal — no vague retainers.</p>
+                        </div>
+                    </div>
+                    <div class="process-connector"></div>
+                    <div class="process-step reveal" style="--delay: 100ms">
+                        <div class="step-num">02</div>
+                        <div class="step-content">
+                            <h3>Architect</h3>
+                            <p>We design the system before we write the first line of code. Architecture review, data flow diagrams, and a prototype that proves the core hypothesis.</p>
+                        </div>
+                    </div>
+                    <div class="process-connector"></div>
+                    <div class="process-step reveal" style="--delay: 200ms">
+                        <div class="step-num">03</div>
+                        <div class="step-content">
+                            <h3>Build</h3>
+                            <p>Two-week sprint cycles with weekly demos. Full test coverage, CI/CD from day one. You always have a working version you can inspect and redirect.</p>
+                        </div>
+                    </div>
+                    <div class="process-connector"></div>
+                    <div class="process-step reveal" style="--delay: 300ms">
+                        <div class="step-num">04</div>
+                        <div class="step-content">
+                            <h3>Launch & Scale</h3>
+                            <p>Deployment, monitoring, runbooks, and a handoff that your team can actually maintain. Optional retainer for ongoing improvement and scaling.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             TESTIMONIALS
+             ============================================================ -->
+        <section class="section testimonials-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div class="section-tag">What Clients Say</div>
+                    <h2 class="section-title">Trusted by teams that ship</h2>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card reveal">
+                        <div class="quote-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/></svg>
+                        </div>
+                        <p>"Solvbit took our vague 'we need AI' brief and turned it into a scoped roadmap in two weeks. Then they built it in eight. We haven't had to touch the system in months."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">J</div>
+                            <div>
+                                <div class="author-name">Jamie Park</div>
+                                <div class="author-role">CTO, Series-B SaaS Co.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card reveal" style="--delay: 100ms">
+                        <div class="quote-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/></svg>
+                        </div>
+                        <p>"Every other firm I talked to wanted a 6-month discovery engagement. Solvbit gave us a prototype in week 2 and a production system in week 10. The rest of the market isn't even close."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">R</div>
+                            <div>
+                                <div class="author-name">Riya Nair</div>
+                                <div class="author-role">VP Engineering, FinTech Startup</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card reveal" style="--delay: 200ms">
+                        <div class="quote-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/></svg>
+                        </div>
+                        <p>"They set up our entire data infrastructure and ML pipeline from scratch. Six months later we closed a $12M Series A — the investors specifically cited our 'differentiated data moat'."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">M</div>
+                            <div>
+                                <div class="author-name">Marcus Webb</div>
+                                <div class="author-role">Founder & CEO, HealthTech Co.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             CONTACT / CTA
+             ============================================================ -->
+        <section class="section contact-section" id="contact">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-content reveal">
+                        <div class="section-tag">Let's Work Together</div>
+                        <h2 class="section-title">Ready to build something?</h2>
+                        <p class="contact-desc">Tell us about your project. We'll respond within one business day with a quick take on scope and fit — no sales call required to get a real answer.</p>
+                        <div class="contact-info">
+                            <a href="mailto:hello@solvbit.com" class="contact-item">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                hello@solvbit.com
+                            </a>
+                            <div class="contact-item">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                Response within 24 hours
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact-form reveal" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" name="name" placeholder="Alex Chen" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" name="email" placeholder="alex@company.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Company</label>
+                            <input type="text" name="company" placeholder="Your company name">
+                        </div>
+                        <div class="form-group">
+                            <label>What are you looking to build?</label>
+                            <textarea name="message" rows="5" placeholder="Tell us about your project, timeline, and any constraints..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg btn-full">
+                            Send Message
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                        <div class="form-success" id="formSuccess">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Message sent! We'll be in touch within 24 hours.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <div class="logo-icon" style="width:28px;height:28px">
+                            <svg viewBox="0 0 40 40" fill="none"><rect x="4" y="4" width="14" height="14" rx="2" fill="currentColor"/><rect x="22" y="4" width="14" height="14" rx="2" fill="currentColor" opacity="0.6"/><rect x="4" y="22" width="14" height="14" rx="2" fill="currentColor" opacity="0.6"/><rect x="22" y="22" width="14" height="14" rx="2" fill="currentColor" opacity="0.3"/></svg>
+                        </div>
+                        <span class="logo-text" style="font-size:1.1rem">solvbit</span>
+                    </a>
+                    <p class="footer-tagline">AI & Tech Consulting.<br>Strategy to production.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <a href="#services">AI Strategy</a>
+                    <a href="#services">LLM Systems</a>
+                    <a href="#services">Data Engineering</a>
+                    <a href="#services">Cloud Architecture</a>
+                    <a href="#services">MLOps</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <a href="#about">About</a>
+                    <a href="#work">Case Studies</a>
+                    <a href="#process">How We Work</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <a href="mailto:hello@solvbit.com">hello@solvbit.com</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 <strong>Solvbit</strong>. All rights reserved.</p>
+                <p class="footer-note">Built with care. Hosted anywhere.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"><span id="toastMsg"></span></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
