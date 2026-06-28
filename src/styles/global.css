@@ -133,13 +133,15 @@ h1, h2, h3, h4, .font-display {
   background-size: 44px 44px;
 }
 
-/* fade-up reveal driven by IntersectionObserver (see scripts) */
-.reveal {
+/* fade-up reveal driven by IntersectionObserver (see scripts).
+   Gated behind html.js so the site degrades gracefully: with no JS the
+   content is fully visible rather than stuck at opacity:0. */
+html.js .reveal {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
-.reveal.is-visible {
+html.js .reveal.is-visible {
   opacity: 1;
   transform: none;
 }
