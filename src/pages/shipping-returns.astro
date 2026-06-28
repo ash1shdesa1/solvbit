@@ -1,0 +1,29 @@
+---
+import Base from "@/layouts/Base.astro";
+import PageHeader from "@/components/PageHeader.astro";
+---
+<Base title="Shipping & Returns" description="Shipping times, rates, and our return policy for Splatter Impacts targets.">
+  <PageHeader title="Shipping & Returns" lead="Clear, simple policies so you know what to expect." />
+  <section class="container-page max-w-3xl py-12 space-y-8 text-steel-300">
+    <div>
+      <h2 class="font-display text-2xl font-bold text-steel-50">Shipping</h2>
+      <ul class="mt-3 space-y-2 text-sm">
+        <li><strong class="text-steel-100">Processing:</strong> Most orders ship within one business day.</li>
+        <li><strong class="text-steel-100">Free shipping:</strong> Orders over $75 ship free within the contiguous US.</li>
+        <li><strong class="text-steel-100">Rates:</strong> Orders under $75 are charged calculated shipping at checkout based on weight and destination.</li>
+        <li><strong class="text-steel-100">Tracking:</strong> You'll receive tracking by email as soon as your order ships.</li>
+        <li><strong class="text-steel-100">Packaging:</strong> Splatter paper ships flat in reinforced mailers; steel ships boxed and padded.</li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="font-display text-2xl font-bold text-steel-50">Returns</h2>
+      <ul class="mt-3 space-y-2 text-sm">
+        <li><strong class="text-steel-100">Window:</strong> Unused items in original packaging may be returned within 30 days of delivery.</li>
+        <li><strong class="text-steel-100">Non-returnable:</strong> For safety and hygiene reasons, used steel and opened paper packs can't be returned.</li>
+        <li><strong class="text-steel-100">Damaged or wrong items:</strong> If something arrives damaged or incorrect, contact us within 7 days and we'll make it right at no cost to you.</li>
+        <li><strong class="text-steel-100">How to start:</strong> Email us with your order number and we'll send return instructions.</li>
+      </ul>
+    </div>
+    <p class="text-sm text-steel-500">These policies are a general template for the demo storefront and should be reviewed before launch.</p>
+  </section>
+</Base>

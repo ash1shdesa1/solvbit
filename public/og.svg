@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="bg" cx="72%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#1b2026"/>
+      <stop offset="100%" stop-color="#090b0e"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g transform="translate(820 315)">
+    <circle r="200" fill="#e7e9ec"/>
+    <circle r="160" fill="none" stroke="#9aa3af" stroke-width="3"/>
+    <circle r="110" fill="none" stroke="#9aa3af" stroke-width="3"/>
+    <circle r="55" fill="#0f1216"/>
+    <circle r="16" fill="#ff5a00"/>
+    <circle cx="120" cy="-120" r="20" fill="#9eff00"/>
+    <circle cx="150" cy="-150" r="9" fill="#9eff00"/>
+    <circle cx="100" cy="-160" r="7" fill="#9eff00"/>
+  </g>
+  <text x="90" y="250" font-family="Oswald, Arial, sans-serif" font-size="78" font-weight="700" fill="#f6f7f8">SPLATTER<tspan fill="#ff5a00">IMPACTS</tspan></text>
+  <text x="92" y="330" font-family="Inter, Arial, sans-serif" font-size="40" fill="#9aa3af">See every hit.</text>
+  <text x="92" y="400" font-family="Inter, Arial, sans-serif" font-size="28" fill="#c2ff4d">Reactive &amp; splatter targets for shooters</text>
+</svg>

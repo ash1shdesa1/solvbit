@@ -1,0 +1,65 @@
+---
+import Base from "@/layouts/Base.astro";
+import PageHeader from "@/components/PageHeader.astro";
+import { BRAND } from "@/lib/nav";
+---
+<Base title="Contact" description="Get in touch with Splatter Impacts about orders, bulk pricing, or anything range-related.">
+  <PageHeader title="Get in touch" lead="Questions about an order, bulk pricing, or a product? We're happy to help." />
+
+  <section class="container-page grid gap-10 py-12 lg:grid-cols-[1.2fr_1fr]">
+    <div class="card p-6 sm:p-8">
+      <h2 class="font-display text-2xl font-bold text-steel-50">Send a message</h2>
+      <p class="mt-2 text-sm text-steel-400">We usually reply within one business day.</p>
+      <form class="mt-6 space-y-4" data-contact>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label for="name" class="mb-1.5 block text-sm text-steel-300">Name</label>
+            <input id="name" name="name" required class="w-full rounded-lg border border-steel-600 bg-steel-950 px-4 py-2.5 text-steel-100 focus:border-blaze-500 focus:outline-none" />
+          </div>
+          <div>
+            <label for="cemail" class="mb-1.5 block text-sm text-steel-300">Email</label>
+            <input id="cemail" name="email" type="email" required class="w-full rounded-lg border border-steel-600 bg-steel-950 px-4 py-2.5 text-steel-100 focus:border-blaze-500 focus:outline-none" />
+          </div>
+        </div>
+        <div>
+          <label for="subject" class="mb-1.5 block text-sm text-steel-300">Subject</label>
+          <input id="subject" name="subject" class="w-full rounded-lg border border-steel-600 bg-steel-950 px-4 py-2.5 text-steel-100 focus:border-blaze-500 focus:outline-none" />
+        </div>
+        <div>
+          <label for="message" class="mb-1.5 block text-sm text-steel-300">Message</label>
+          <textarea id="message" name="message" rows="5" required class="w-full rounded-lg border border-steel-600 bg-steel-950 px-4 py-2.5 text-steel-100 focus:border-blaze-500 focus:outline-none"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary w-full sm:w-auto">Send message</button>
+        <p data-contact-msg hidden class="text-sm text-splat-500"></p>
+      </form>
+    </div>
+
+    <div class="space-y-6">
+      <div class="card p-6">
+        <h3 class="font-display text-lg font-semibold text-steel-100">Email</h3>
+        <a href={`mailto:${BRAND.email}`} class="mt-1 block text-blaze-400 hover:text-blaze-300">{BRAND.email}</a>
+      </div>
+      <div class="card p-6">
+        <h3 class="font-display text-lg font-semibold text-steel-100">Bulk &amp; club orders</h3>
+        <p class="mt-1 text-sm text-steel-400">Ranges, clubs, and dealers — tell us what you need and we'll send a quote with volume pricing.</p>
+      </div>
+      <div class="card p-6">
+        <h3 class="font-display text-lg font-semibold text-steel-100">Order help</h3>
+        <p class="mt-1 text-sm text-steel-400">Include your order number for the fastest response on shipping and returns questions.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.querySelector("[data-contact]")?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const msg = document.querySelector<HTMLElement>("[data-contact-msg]");
+      // Demo: no backend. Wire to Formspree, Shopify, or an email API on launch.
+      if (msg) {
+        msg.textContent = "Thanks! Your message has been noted. (Connect a form backend to receive these live.)";
+        msg.hidden = false;
+      }
+      (e.target as HTMLFormElement).reset();
+    });
+  </script>
+</Base>

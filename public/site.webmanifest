@@ -1,0 +1,12 @@
+{
+  "name": "Splatter Impacts",
+  "short_name": "Splatter",
+  "description": "Reactive and splatter shooting targets — see every hit.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f1216",
+  "theme_color": "#0f1216",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

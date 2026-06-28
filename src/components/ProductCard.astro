@@ -1,0 +1,58 @@
+---
+import type { Product } from "@/lib/types";
+import TargetArt from "@/components/TargetArt.astro";
+import StarRating from "@/components/StarRating.astro";
+import { CATEGORY_LABELS } from "@/lib/types";
+import { formatFrom } from "@/lib/format";
+
+interface Props {
+  product: Product;
+}
+const { product } = Astro.props;
+const multi = product.variants.length > 1;
+
+// payload for the quick add-to-cart button (uses the first variant)
+const v0 = product.variants[0];
+const addPayload = JSON.stringify({
+  variantId: v0.id,
+  handle: product.handle,
+  title: product.title,
+  variantTitle: v0.title,
+  price: v0.price,
+  art: product.art,
+});
+---
+<article class="card group flex flex-col overflow-hidden transition-colors hover:border-blaze-600/70">
+  <a href={`/products/${product.handle}`} class="relative block aspect-square overflow-hidden bg-steel-950">
+    <div class="absolute inset-0 transition-transform duration-500 group-hover:scale-105">
+      <TargetArt art={product.art} />
+    </div>
+    <div class="absolute left-3 top-3 flex gap-1.5">
+      {product.bestseller && (
+        <span class="rounded-full bg-blaze-500 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-white">Bestseller</span>
+      )}
+      <span class="rounded-full bg-steel-950/80 px-2.5 py-1 text-[11px] font-medium text-steel-300">{CATEGORY_LABELS[product.category]}</span>
+    </div>
+  </a>
+
+  <div class="flex flex-1 flex-col p-4">
+    <div class="flex items-start justify-between gap-2">
+      <h3 class="font-display text-lg font-semibold leading-tight text-steel-50">
+        <a href={`/products/${product.handle}`} class="hover:text-blaze-400">{product.title}</a>
+      </h3>
+      <span class="whitespace-nowrap font-display text-lg font-semibold text-blaze-400">
+        {formatFrom(product.priceFrom, multi)}
+      </span>
+    </div>
+    {product.subtitle && <p class="mt-1 text-sm text-steel-400">{product.subtitle}</p>}
+
+    {product.rating && <StarRating value={product.rating.value} count={product.rating.count} class="mt-2" />}
+
+    <div class="mt-4 flex items-center gap-2 pt-1">
+      <a href={`/products/${product.handle}`} class="btn btn-ghost flex-1 text-sm">Details</a>
+      <button type="button" class="btn btn-primary text-sm" data-add={addPayload} aria-label={`Add ${product.title} to cart`}>
+        Add
+      </button>
+    </div>
+  </div>
+</article>

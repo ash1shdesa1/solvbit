@@ -1,0 +1,90 @@
+---
+import Base from "@/layouts/Base.astro";
+import ProductCard from "@/components/ProductCard.astro";
+import { getProducts } from "@/lib/catalog";
+import { CATEGORY_LABELS } from "@/lib/types";
+
+const products = await getProducts();
+
+const filters = [
+  { key: "all", label: "All" },
+  { key: "splatter", label: CATEGORY_LABELS.splatter },
+  { key: "reactive", label: CATEGORY_LABELS.reactive },
+  { key: "bundle", label: CATEGORY_LABELS.bundle },
+  { key: "accessory", label: CATEGORY_LABELS.accessory },
+];
+---
+<Base title="Shop" description="Browse all Splatter Impacts targets — splatter paper, reactive AR500 steel, bundles, and range gear.">
+  <section class="border-b border-steel-800 bg-grid">
+    <div class="container-page py-12">
+      <h1 class="font-display text-4xl font-bold text-steel-50">Shop targets</h1>
+      <p class="mt-2 max-w-xl text-steel-400">
+        Everything we make, in one place. Filter by type, then add to cart.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-page py-10">
+    <div class="flex flex-wrap gap-2" role="tablist" aria-label="Product categories">
+      {filters.map((f) => (
+        <button
+          type="button"
+          data-filter={f.key}
+          class="filter-chip rounded-full border border-steel-700 px-4 py-2 text-sm font-medium text-steel-300 transition-colors hover:border-blaze-500 data-[active]:border-blaze-500 data-[active]:bg-blaze-500 data-[active]:text-white"
+        >
+          {f.label}
+        </button>
+      ))}
+    </div>
+
+    <p data-result-count class="mt-6 text-sm text-steel-500"></p>
+
+    <div data-grid class="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {products.map((p) => (
+        <div class="product-cell" data-category={p.category}>
+          <ProductCard product={p} />
+        </div>
+      ))}
+    </div>
+
+    <p data-empty hidden class="py-16 text-center text-steel-400">No products in this category yet.</p>
+  </section>
+
+  <script>
+    function applyFilter(cat: string) {
+      const cells = document.querySelectorAll<HTMLElement>(".product-cell");
+      let shown = 0;
+      cells.forEach((cell) => {
+        const match = cat === "all" || cell.dataset.category === cat;
+        cell.hidden = !match;
+        if (match) shown++;
+      });
+      document.querySelectorAll<HTMLElement>(".filter-chip").forEach((chip) => {
+        if (chip.dataset.filter === cat) chip.setAttribute("data-active", "");
+        else chip.removeAttribute("data-active");
+      });
+      const count = document.querySelector<HTMLElement>("[data-result-count]");
+      if (count) count.textContent = `${shown} ${shown === 1 ? "product" : "products"}`;
+      const empty = document.querySelector<HTMLElement>("[data-empty]");
+      if (empty) empty.hidden = shown !== 0;
+    }
+
+    function currentCat(): string {
+      const c = new URLSearchParams(window.location.search).get("c");
+      return c && ["splatter", "reactive", "bundle", "accessory"].includes(c) ? c : "all";
+    }
+
+    document.querySelectorAll<HTMLElement>(".filter-chip").forEach((chip) => {
+      chip.addEventListener("click", () => {
+        const cat = chip.dataset.filter || "all";
+        const url = new URL(window.location.href);
+        if (cat === "all") url.searchParams.delete("c");
+        else url.searchParams.set("c", cat);
+        history.replaceState(null, "", url);
+        applyFilter(cat);
+      });
+    });
+
+    applyFilter(currentCat());
+  </script>
+</Base>

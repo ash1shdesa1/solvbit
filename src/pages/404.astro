@@ -1,0 +1,15 @@
+---
+import Base from "@/layouts/Base.astro";
+import TargetArt from "@/components/TargetArt.astro";
+---
+<Base title="Page not found" noindex={true}>
+  <section class="container-page grid place-items-center py-24 text-center">
+    <div class="mx-auto h-40 w-40 opacity-90"><TargetArt art="bullseye" /></div>
+    <h1 class="mt-6 font-display text-5xl font-bold text-steel-50">404 — Missed.</h1>
+    <p class="mt-3 max-w-md text-steel-400">That page isn't on the range. Let's get you back to something you can shoot.</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href="/" class="btn btn-primary">Home</a>
+      <a href="/shop" class="btn btn-ghost">Shop targets</a>
+    </div>
+  </section>
+</Base>

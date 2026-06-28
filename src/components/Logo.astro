@@ -1,0 +1,19 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className = "h-8 w-auto" } = Astro.props;
+---
+<span class={`inline-flex items-center gap-2 ${className}`}>
+  <svg viewBox="0 0 40 40" class="h-8 w-8" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="20" cy="20" r="18" fill="#0f1216" stroke="#262b32" stroke-width="2" />
+    <circle cx="20" cy="20" r="12" fill="none" stroke="#9aa3af" stroke-width="2" />
+    <circle cx="20" cy="20" r="5" fill="#ff5a00" />
+    <circle cx="27" cy="13" r="3.4" fill="#9eff00" />
+    <circle cx="31" cy="11" r="1.6" fill="#9eff00" />
+    <circle cx="25" cy="9" r="1.4" fill="#9eff00" />
+  </svg>
+  <span class="font-display text-lg font-semibold tracking-wide text-steel-50">
+    SPLATTER<span class="text-blaze-500">IMPACTS</span>
+  </span>
+</span>
