@@ -1,0 +1,16 @@
+---
+interface Props {
+  value: number;
+  count?: number;
+  class?: string;
+}
+const { value, count, class: className = "" } = Astro.props;
+const pct = Math.max(0, Math.min(100, (value / 5) * 100));
+---
+<span class={`inline-flex items-center gap-1.5 ${className}`} aria-label={`Rated ${value} out of 5`}>
+  <span class="relative inline-block leading-none" aria-hidden="true">
+    <span class="text-steel-600">★★★★★</span>
+    <span class="absolute inset-0 overflow-hidden text-blaze-500" style={`width:${pct}%`}>★★★★★</span>
+  </span>
+  {count != null && <span class="text-xs text-steel-400">{value.toFixed(1)} ({count})</span>}
+</span>

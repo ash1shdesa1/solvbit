@@ -1,0 +1,28 @@
+---
+import Base from "@/layouts/Base.astro";
+import PageHeader from "@/components/PageHeader.astro";
+import { BRAND } from "@/lib/nav";
+---
+<Base title="Privacy Policy" description="How Splatter Impacts handles your information." noindex={false}>
+  <PageHeader title="Privacy Policy" lead="A plain-language summary of how we handle your information." />
+  <section class="container-page max-w-3xl py-12 space-y-6 text-steel-300 text-sm leading-relaxed">
+    <p>This is a template privacy policy for the Splatter Impacts storefront and should be reviewed by the store owner before launch.</p>
+
+    <div>
+      <h2 class="font-display text-xl font-bold text-steel-50">What we collect</h2>
+      <p class="mt-2">When you place an order, our checkout provider (Shopify) collects the information needed to process and ship it — name, contact details, shipping address, and payment information. Payment card details are handled directly by the payment processor; we never see or store full card numbers.</p>
+    </div>
+    <div>
+      <h2 class="font-display text-xl font-bold text-steel-50">How we use it</h2>
+      <p class="mt-2">We use your information to fulfill orders, provide support, prevent fraud, and — only if you opt in — send occasional product news. We do not sell your personal information.</p>
+    </div>
+    <div>
+      <h2 class="font-display text-xl font-bold text-steel-50">Cookies & analytics</h2>
+      <p class="mt-2">The storefront may use essential cookies (for example, to remember your cart) and privacy-respecting analytics to understand traffic. You can control cookies through your browser settings.</p>
+    </div>
+    <div>
+      <h2 class="font-display text-xl font-bold text-steel-50">Your choices</h2>
+      <p class="mt-2">You can request access to, correction of, or deletion of your personal information at any time by emailing <a href={`mailto:${BRAND.email}`} class="text-blaze-400 hover:text-blaze-300">{BRAND.email}</a>.</p>
+    </div>
+  </section>
+</Base>

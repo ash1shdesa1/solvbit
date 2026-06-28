@@ -1,0 +1,194 @@
+---
+/**
+ * TargetArt — original SVG illustrations for each product art key.
+ * Pure inline SVG so it scales crisply, themes with our colors, and ships
+ * zero image weight. No external assets.
+ */
+import type { ArtKey } from "@/lib/types";
+
+interface Props {
+  art: ArtKey;
+  class?: string;
+  splatter?: boolean; // show the reactive impact splatter
+}
+const { art, class: className = "", splatter = true } = Astro.props;
+
+const STEEL = "#262b32";
+const STEEL_LIGHT = "#4a525d";
+const FACE = "#0f1216";
+const PAPER = "#e7e9ec";
+const BLAZE = "#ff5a00";
+const SPLAT = "#9eff00";
+---
+
+<svg
+  viewBox="0 0 400 400"
+  role="img"
+  aria-label={`${art} target illustration`}
+  class={`block h-full w-full ${className}`}
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <radialGradient id={`bg-${art}`} cx="50%" cy="42%" r="75%">
+      <stop offset="0%" stop-color="#1b2026" />
+      <stop offset="100%" stop-color="#0a0c0f" />
+    </radialGradient>
+    <linearGradient id={`steel-${art}`} x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color={STEEL_LIGHT} />
+      <stop offset="100%" stop-color={STEEL} />
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" fill={`url(#bg-${art})`} />
+
+  {art === "bullseye" && (
+    <g>
+      <circle cx="200" cy="200" r="150" fill={PAPER} />
+      <circle cx="200" cy="200" r="120" fill="none" stroke="#9aa3af" stroke-width="2" />
+      <circle cx="200" cy="200" r="90" fill="none" stroke="#9aa3af" stroke-width="2" />
+      <circle cx="200" cy="200" r="60" fill="none" stroke="#9aa3af" stroke-width="2" />
+      <circle cx="200" cy="200" r="34" fill={FACE} />
+      <circle cx="200" cy="200" r="10" fill={BLAZE} />
+    </g>
+  )}
+
+  {art === "sight-in" && (
+    <g>
+      <rect x="55" y="55" width="290" height="290" rx="6" fill={PAPER} />
+      {Array.from({ length: 11 }).map((_, i) => (
+        <line x1={55 + i * 29} y1="55" x2={55 + i * 29} y2="345" stroke="#c8cdd4" stroke-width="1" />
+      ))}
+      {Array.from({ length: 11 }).map((_, i) => (
+        <line x1="55" y1={55 + i * 29} x2="345" y2={55 + i * 29} stroke="#c8cdd4" stroke-width="1" />
+      ))}
+      <line x1="200" y1="55" x2="200" y2="345" stroke={BLAZE} stroke-width="2" />
+      <line x1="55" y1="200" x2="345" y2="200" stroke={BLAZE} stroke-width="2" />
+      <rect x="178" y="178" width="44" height="44" transform="rotate(45 200 200)" fill="none" stroke={FACE} stroke-width="3" />
+    </g>
+  )}
+
+  {art === "silhouette" && (
+    <g>
+      <path
+        d="M200 60c-26 0-44 18-44 42 0 14 6 24 14 32-30 10-52 34-58 70-4 22-6 56-6 96h188c0-40-2-74-6-96-6-36-28-60-58-70 8-8 14-18 14-32 0-24-18-42-44-42z"
+        fill={PAPER}
+      />
+      <ellipse cx="200" cy="232" rx="58" ry="74" fill="none" stroke="#9aa3af" stroke-width="2" />
+      <ellipse cx="200" cy="232" rx="30" ry="40" fill="none" stroke="#9aa3af" stroke-width="2" />
+      <circle cx="200" cy="118" r="20" fill="none" stroke="#9aa3af" stroke-width="2" />
+    </g>
+  )}
+
+  {art === "diamond" && (
+    <g>
+      <rect x="55" y="55" width="290" height="290" rx="6" fill={PAPER} />
+      {Array.from({ length: 9 }).map((_, i) => {
+        const col = i % 3;
+        const row = Math.floor(i / 3);
+        const cx = 120 + col * 80;
+        const cy = 120 + row * 80;
+        return (
+          <rect
+            x={cx - 14}
+            y={cy - 14}
+            width="28"
+            height="28"
+            transform={`rotate(45 ${cx} ${cy})`}
+            fill={FACE}
+          />
+        );
+      })}
+    </g>
+  )}
+
+  {art === "dot-drill" && (
+    <g>
+      <rect x="55" y="55" width="290" height="290" rx="6" fill={PAPER} />
+      {[
+        [130, 130], [270, 130], [200, 200], [130, 270], [270, 270],
+      ].map(([cx, cy], i) => (
+        <g>
+          <circle cx={cx} cy={cy} r="30" fill={FACE} />
+          <text x={cx} y={cy + 7} text-anchor="middle" fill={PAPER} font-size="22" font-family="Oswald, sans-serif">{i + 1}</text>
+        </g>
+      ))}
+    </g>
+  )}
+
+  {art === "splash" && (
+    <g>
+      <rect x="70" y="60" width="260" height="280" rx="8" fill={PAPER} />
+      <rect x="70" y="60" width="260" height="22" fill="#c8cdd4" />
+      <circle cx="200" cy="210" r="78" fill={FACE} />
+    </g>
+  )}
+
+  {art === "steel-gong" && (
+    <g>
+      <line x1="200" y1="40" x2="200" y2="92" stroke={STEEL_LIGHT} stroke-width="6" />
+      <circle cx="200" cy="210" r="120" fill={`url(#steel-${art})`} stroke="#11151a" stroke-width="6" />
+      <circle cx="200" cy="210" r="120" fill="none" stroke="#5b636e" stroke-width="2" opacity="0.6" />
+      <rect x="190" y="98" width="20" height="16" rx="3" fill={FACE} />
+    </g>
+  )}
+
+  {art === "dueling-tree" && (
+    <g>
+      <rect x="194" y="60" width="12" height="280" fill={STEEL_LIGHT} />
+      <rect x="150" y="330" width="100" height="14" rx="3" fill={STEEL} />
+      {[90, 150, 210, 270].map((cy, i) => (
+        <circle cx={i % 2 === 0 ? 150 : 250} cy={cy} r="26" fill={`url(#steel-${art})`} stroke="#11151a" stroke-width="4" />
+      ))}
+    </g>
+  )}
+
+  {art === "spinner" && (
+    <g>
+      <rect x="196" y="120" width="8" height="220" fill={STEEL_LIGHT} />
+      <circle cx="200" cy="130" r="9" fill={STEEL} />
+      <circle cx="200" cy="100" r="34" fill={`url(#steel-${art})`} stroke="#11151a" stroke-width="4" />
+      <circle cx="200" cy="200" r="64" fill={`url(#steel-${art})`} stroke="#11151a" stroke-width="4" />
+    </g>
+  )}
+
+  {art === "plate-rack" && (
+    <g>
+      <rect x="60" y="250" width="280" height="14" rx="3" fill={STEEL} />
+      <rect x="80" y="264" width="10" height="70" fill={STEEL_LIGHT} />
+      <rect x="310" y="264" width="10" height="70" fill={STEEL_LIGHT} />
+      {[96, 148, 200, 252, 304].map((cx) => (
+        <circle cx={cx} cy="190" r="24" fill={`url(#steel-${art})`} stroke="#11151a" stroke-width="3" />
+      ))}
+    </g>
+  )}
+
+  {art === "bundle" && (
+    <g>
+      <rect x="92" y="150" width="180" height="170" rx="8" transform="rotate(-8 182 235)" fill="#1b2026" stroke={STEEL_LIGHT} stroke-width="3" />
+      <rect x="120" y="120" width="180" height="170" rx="8" transform="rotate(6 210 205)" fill={PAPER} />
+      <circle cx="210" cy="200" r="60" fill="none" stroke="#9aa3af" stroke-width="3" />
+      <circle cx="210" cy="200" r="30" fill="none" stroke="#9aa3af" stroke-width="3" />
+      <circle cx="210" cy="200" r="9" fill={BLAZE} />
+    </g>
+  )}
+
+  {art === "accessory" && (
+    <g>
+      <rect x="120" y="90" width="160" height="44" rx="8" fill={STEEL} stroke={STEEL_LIGHT} stroke-width="3" />
+      <rect x="150" y="134" width="100" height="180" rx="6" fill="#1b2026" stroke={STEEL_LIGHT} stroke-width="3" />
+      <circle cx="200" cy="112" r="9" fill={BLAZE} />
+      <line x1="200" y1="134" x2="200" y2="314" stroke={STEEL_LIGHT} stroke-width="4" />
+    </g>
+  )}
+
+  {splatter && (
+    <g opacity="0.95">
+      <circle cx="232" cy="176" r="13" fill={SPLAT} />
+      <circle cx="248" cy="166" r="5" fill={SPLAT} />
+      <circle cx="220" cy="160" r="4" fill={SPLAT} />
+      <circle cx="246" cy="190" r="6" fill={SPLAT} />
+      <circle cx="262" cy="180" r="3" fill={SPLAT} />
+      <circle cx="214" cy="190" r="3.5" fill={SPLAT} />
+    </g>
+  )}
+</svg>

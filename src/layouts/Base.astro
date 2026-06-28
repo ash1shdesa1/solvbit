@@ -1,0 +1,86 @@
+---
+import "@/styles/global.css";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import CartDrawer from "@/components/CartDrawer.astro";
+import { BRAND } from "@/lib/nav";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = "High-visibility splatter targets and hardened reactive steel. See every hit — instant feedback on the range.",
+  image = "/og.svg",
+  noindex = false,
+} = Astro.props;
+
+const fullTitle = title ? `${title} — ${BRAND.name}` : `${BRAND.name} — ${BRAND.tagline}`;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://splatterimpacts.com").href;
+
+// Public Shopify config (inlined at build; tokens here are public by design)
+const siConfig = {
+  domain: import.meta.env.PUBLIC_SHOPIFY_DOMAIN || "",
+  token: import.meta.env.PUBLIC_SHOPIFY_STOREFRONT_TOKEN || "",
+  apiVersion: import.meta.env.PUBLIC_SHOPIFY_API_VERSION || "2025-01",
+  mode: import.meta.env.PUBLIC_SHOPIFY_DOMAIN && import.meta.env.PUBLIC_SHOPIFY_STOREFRONT_TOKEN ? "live" : "demo",
+};
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      // mark JS active ASAP so scroll-reveal styles apply; without JS,
+      // content stays fully visible (graceful degradation).
+      document.documentElement.classList.add("js");
+    </script>
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={BRAND.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(image, Astro.site ?? "https://splatterimpacts.com").href} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="theme-color" content="#0f1216" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap"
+    />
+    {import.meta.env.PUBLIC_SHOPIFY_DOMAIN && (
+      <link rel="preconnect" href={`https://${import.meta.env.PUBLIC_SHOPIFY_DOMAIN}`} crossorigin />
+    )}
+
+    <script is:inline set:html={`window.__SI__=${JSON.stringify(siConfig)};`} />
+  </head>
+  <body class="flex min-h-dvh flex-col">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-blaze-500 focus:px-4 focus:py-2 focus:text-white">Skip to content</a>
+    <Header />
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+    <CartDrawer />
+
+    <script>
+      import "@/scripts/ui.ts";
+      import "@/scripts/cart.ts";
+    </script>
+  </body>
+</html>

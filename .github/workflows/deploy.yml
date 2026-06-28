@@ -1,0 +1,57 @@
+name: Deploy
+
+# Builds the storefront and publishes to GitHub Pages.
+# Runs on every push to main, on a daily schedule (to pull the latest Shopify
+# catalog), on manual dispatch, and on a repository_dispatch event so a Shopify
+# webhook / automation can trigger a rebuild the moment products change.
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 7 * * *" # 07:17 UTC daily — keep the catalog fresh
+  workflow_dispatch:
+  repository_dispatch:
+    types: [shopify-update]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one deploy at a time; cancel superseded runs.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Build
+        run: npm run build
+        env:
+          # Configure these in repo Settings → Secrets and variables → Actions.
+          # If absent, the site builds in demo mode (original demo catalog).
+          PUBLIC_SHOPIFY_DOMAIN: ${{ vars.PUBLIC_SHOPIFY_DOMAIN }}
+          PUBLIC_SHOPIFY_STOREFRONT_TOKEN: ${{ secrets.PUBLIC_SHOPIFY_STOREFRONT_TOKEN }}
+          PUBLIC_SHOPIFY_API_VERSION: ${{ vars.PUBLIC_SHOPIFY_API_VERSION }}
+          SITE_URL: https://splatterimpacts.com
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

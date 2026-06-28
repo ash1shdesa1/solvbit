@@ -1,0 +1,11 @@
+# Configuration for the lychee link checker (used by .github/workflows/links.yml)
+# Ignore mailto links and local/preview hosts; check everything else.
+exclude = [
+  "^mailto:",
+  "^https?://localhost",
+  "^https?://127\\.0\\.0\\.1",
+]
+# Treat too-many-requests as success to avoid flaky failures from rate limits.
+accept = ["200", "206", "429"]
+max_retries = 2
+timeout = 20

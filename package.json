@@ -1,0 +1,37 @@
+{
+  "name": "splatterimpacts",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Splatter Impacts — headless Shopify storefront for reactive & splatter shooting targets.",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview --host",
+    "astro": "astro",
+    "check": "astro check",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "lighthouse": "lhci autorun",
+    "format": "prettier --write \"**/*.{astro,ts,js,json,md,css}\""
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "astro": "^5.2.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@playwright/test": "^1.50.1",
+    "@tailwindcss/vite": "^4.0.6",
+    "@lhci/cli": "^0.14.0",
+    "prettier": "^3.5.1",
+    "prettier-plugin-astro": "^0.14.1",
+    "tailwindcss": "^4.0.6",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

@@ -1,0 +1,61 @@
+---
+import Logo from "@/components/Logo.astro";
+import { PRIMARY_NAV } from "@/lib/nav";
+---
+<header class="sticky top-0 z-50 border-b border-steel-800 bg-steel-950/85 backdrop-blur">
+  <div class="container-page flex h-16 items-center justify-between gap-4">
+    <a href="/" class="shrink-0" aria-label="Splatter Impacts home">
+      <Logo />
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7" aria-label="Primary">
+      {PRIMARY_NAV.map((link) => (
+        <a href={link.href} class="text-sm font-medium text-steel-200 hover:text-blaze-400 transition-colors">
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href="/shop" class="hidden sm:inline-flex btn btn-ghost text-sm py-2">Shop</a>
+      <button
+        type="button"
+        data-cart-open
+        class="relative inline-flex h-10 w-10 items-center justify-center rounded-lg border border-steel-700 text-steel-100 hover:border-blaze-500"
+        aria-label="Open cart"
+      >
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M3 4h2l2.4 12.2a1 1 0 0 0 1 .8h8.7a1 1 0 0 0 1-.8L21 8H6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="10" cy="20" r="1.4" fill="currentColor" stroke="none"/>
+          <circle cx="18" cy="20" r="1.4" fill="currentColor" stroke="none"/>
+        </svg>
+        <span
+          data-cart-count
+          hidden
+          class="absolute -right-1.5 -top-1.5 grid h-5 min-w-5 place-items-center rounded-full bg-blaze-500 px-1 text-[11px] font-bold text-white"
+        >0</span>
+      </button>
+      <button
+        type="button"
+        data-nav-toggle
+        class="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-steel-700 text-steel-100"
+        aria-label="Toggle menu"
+      >
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- mobile nav -->
+  <div class="nav-panel md:hidden border-t border-steel-800 bg-steel-950">
+    <nav class="container-page flex flex-col py-3" aria-label="Mobile">
+      {PRIMARY_NAV.map((link) => (
+        <a href={link.href} data-nav-link class="py-2.5 text-steel-200 hover:text-blaze-400">
+          {link.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>

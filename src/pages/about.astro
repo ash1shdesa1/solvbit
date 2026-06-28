@@ -1,0 +1,60 @@
+---
+import Base from "@/layouts/Base.astro";
+import PageHeader from "@/components/PageHeader.astro";
+import TargetArt from "@/components/TargetArt.astro";
+
+const values = [
+  { t: "Feedback first", d: "A target only earns its place if it tells you something. Ours flash, ring, and react so every shot teaches you something." },
+  { t: "Honest gear", d: "Real AR500, real adhesive that holds in wind, real paper that lays flat. No gimmicks, no fluff." },
+  { t: "Range-tested", d: "If we wouldn't run it on our own range day, we don't sell it." },
+];
+---
+<Base title="About" description="Splatter Impacts makes high-visibility splatter targets and hardened reactive steel for shooters who want honest feedback on every shot.">
+  <PageHeader
+    title="Built by shooters, for shooters."
+    lead="Splatter Impacts started with a simple frustration: squinting downrange trying to figure out where a group landed. We thought range day should be more fun than that."
+  />
+
+  <section class="container-page grid gap-10 py-16 lg:grid-cols-2 lg:items-center">
+    <div class="prose-block space-y-4 text-steel-300">
+      <p>
+        There's a moment every shooter knows — you fire a clean group, walk it back,
+        and still can't tell exactly where you hit. We built Splatter Impacts to kill
+        that moment. Our splatter targets bloom bright on impact so you can call your
+        shots from the bench, and our reactive steel rings and swings so the whole
+        range knows you connected.
+      </p>
+      <p>
+        We focus on two things and try to do them really well: high-visibility
+        splatter paper for precision and zeroing, and through-hardened AR500 steel for
+        the pure joy of a target that fights back. No printer-paper bullseyes, no
+        mystery-metal "steel" that craters on the first hit.
+      </p>
+      <p>
+        Whether you're sighting in a new optic, running a dot drill on the timer, or
+        just introducing a friend to the addictive <em>ding</em> of steel — we want to
+        give you something different, and better, to shoot.
+      </p>
+    </div>
+    <div class="card aspect-square overflow-hidden"><TargetArt art="dueling-tree" /></div>
+  </section>
+
+  <section class="border-t border-steel-800 bg-steel-900/30">
+    <div class="container-page py-16">
+      <h2 class="font-display text-3xl font-bold text-steel-50">What we stand for</h2>
+      <div class="mt-8 grid gap-6 md:grid-cols-3">
+        {values.map((v) => (
+          <div class="card p-6">
+            <h3 class="font-display text-xl font-semibold text-blaze-400">{v.t}</h3>
+            <p class="mt-2 text-sm text-steel-400">{v.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="container-page py-16 text-center">
+    <h2 class="font-display text-3xl font-bold text-steel-50">Ready for a better range day?</h2>
+    <a href="/shop" class="btn btn-primary mt-6 text-base">Shop targets</a>
+  </section>
+</Base>

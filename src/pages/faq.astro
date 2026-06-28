@@ -1,0 +1,75 @@
+---
+import Base from "@/layouts/Base.astro";
+import PageHeader from "@/components/PageHeader.astro";
+
+const faqs = [
+  {
+    q: "How do splatter targets work?",
+    a: "Our splatter paper has a bright reactive coating under a dark face. When a bullet passes through, it strips away the dark layer and leaves a high-visibility halo around each hole — so you can see your hits from the firing line without a spotting scope.",
+  },
+  {
+    q: "What distance and calibers are splatter targets good for?",
+    a: "Splatter paper works with any caliber, from rimfire to high-power rifle. The bright impact ring makes them especially useful at longer distances where small holes are hard to spot. They're ideal for sighting in, group testing, and drills.",
+  },
+  {
+    q: "What steel do you use, and is it safe?",
+    a: "Our reactive targets are laser-cut from through-hardened AR500 (roughly 500 Brinell hardness). When used at the recommended minimum distances and within rated velocity, AR500 deflects fragments downward. Always follow our Range Safety guidelines, keep steel square to the shooter, and stop using any target that becomes pitted or cratered.",
+  },
+  {
+    q: "What's the minimum distance for steel?",
+    a: "As a general guideline we recommend a minimum of 10 yards for handgun and 100 yards for rifle, but always defer to your range's rules and the target manufacturer's rating for your specific load. Velocity, not just caliber, is what matters.",
+  },
+  {
+    q: "How fast do orders ship?",
+    a: "Most orders ship within one business day. Splatter paper ships flat in a reinforced mailer; steel ships boxed. You'll get tracking by email as soon as your order is on its way.",
+  },
+  {
+    q: "Do you offer free shipping?",
+    a: "Yes — orders over $75 ship free within the contiguous US. Orders under that are charged calculated shipping at checkout.",
+  },
+  {
+    q: "Can I return a target?",
+    a: "Unused targets in original packaging can be returned within 30 days. For full details see our Shipping & Returns page. We can't accept returns on used steel or opened paper packs for safety and hygiene reasons.",
+  },
+  {
+    q: "Do you do bulk or range/club pricing?",
+    a: "We do. Reach out through the Contact page with the quantities you're after and we'll put together a quote.",
+  },
+];
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+---
+<Base title="FAQ" description="Answers about splatter targets, AR500 reactive steel, shipping, returns, and range safety.">
+  <PageHeader title="Frequently asked questions" lead="Everything you need to know before your next range day." />
+
+  <section class="container-page max-w-3xl py-12">
+    <div class="divide-y divide-steel-800 border-y border-steel-800">
+      {faqs.map((f) => (
+        <details class="group py-4">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-medium text-steel-100">
+            {f.q}
+            <svg viewBox="0 0 24 24" class="h-5 w-5 shrink-0 text-blaze-400 transition-transform group-open:rotate-45" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M12 5v14M5 12h14" stroke-linecap="round"/>
+            </svg>
+          </summary>
+          <p class="mt-3 text-steel-400">{f.a}</p>
+        </details>
+      ))}
+    </div>
+
+    <div class="mt-10 card p-6 text-center">
+      <p class="text-steel-300">Still have a question?</p>
+      <a href="/contact" class="btn btn-primary mt-4">Contact us</a>
+    </div>
+  </section>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqLd)} />
+</Base>
